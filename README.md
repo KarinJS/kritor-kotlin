@@ -18,10 +18,31 @@
 - **[docs](./docs)**: 文档
 - **[protos](./protos)**: 接口定义
 
-## 使用注意
+## 差异
+
+- **[protos-lagrange](./protos-lagrange)**: **Lagrange.Core**定制化接口定义
+
+# 使用注意
 
 本项目仅提供`kotlin`示例的grpc代码，
 您可以下载对应proto文件，移植到您的平台。
-本项目的目的不是为了取代`OneBot`，
-`OneBot`在QQNT中由于协议大范围改动，
+
+本项目的目的不是为了取代`OneBot`。 
+
+在新一代客户端协议中大范围出现变动，
 其原有定义已经不再适用，因此我们提供了新的定义。
+
+### 注解字段解释
+
+```protobuf
+extend google.protobuf.MethodOptions {
+  bool require = 1; // 需要强制实现的服务
+  string desc = 2; // 服务描述
+}
+```
+
+## 接入状态
+
+- [Shamrock](https://github.com/whitechi73/OpenShamrock): **v1.1.0+**
+- [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core): **unknown**
+  - **[Lagrange.Kritor](https://github.com/LagrangeDev/Lagrange.Kritor)**: 一个**Kritor**在C#的实现。

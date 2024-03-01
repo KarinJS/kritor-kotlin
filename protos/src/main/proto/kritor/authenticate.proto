@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package kritor;
+
+option csharp_namespace = "Kritor";
+option java_multiple_files = true;
+option java_package = "io.kritor";
+
+import "kritor/descriptor.proto";
+
+/* 非常规定义接口 */
+
+service Authentication {
+  rpc Auth (AuthReq) returns (AuthRsp) {
+    option (kritor.require) = true;
+  }
+
+  rpc GetTicket (TicketReq) returns (TicketRsp) {
+    option (kritor.require) = false;
+    //option (kritor.desc) = "TicketRsp.ticket为空/empty则表示没有ticket，无需鉴权";
+  }
+
+  rpc DeleteTicket (TicketReq) returns (TicketRsp) {
+    option (kritor.require) = false;
+    //option (kritor.desc) = "TicketRsp.ticket恒为空";
+  }
+
+  rpc AddTicket (TicketReq) returns (TicketRsp) {
+    option (kritor.require) = false;
+    //option (kritor.desc) = "TicketRsp.ticket恒为空";
+  }
+}
+
+enum AuthCode {
+  OK = 0;
+  NO_ACCOUNT = 1;
+  NO_TICKET = 2;
+  LOGIC_ERROR = 3;
+}
+
+message AuthReq {
+  string ticket = 1; // 客户端连接认证ticket
+  string account = 2; // 客户端连接认证账号
+}
+
+message AuthRsp {
+  AuthCode code = 1; // 认证结果
+  string msg = 2; // 错误信息
+}
+
+/* 所有对认证ticket增删查都需要使用super ticket */
+
+message TicketReq {
+  string account = 1; // 客户端连接认证账号
+  string ticket = 2; // 客户端连接认证super ticket
+}
+
+message TicketRsp {
+  int32 code = 1;
+  string msg = 2;
+  repeated string ticket = 3; // 返回的客户端ticket，非super ticket
+}
