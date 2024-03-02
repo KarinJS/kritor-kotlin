@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package kritor.group;
+
+option csharp_namespace = "Kritor.Group";
+option java_multiple_files = true;
+option java_package = "io.kritor.group";
+
+service GroupFileService {
+  rpc CreateFolder(CreateFolderRequest) returns (CreateFolderResponse);
+  rpc DeleteFolder(DeleteFolderRequest) returns (DeleteFolderResponse);
+
+  rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
+
+  rpc GetFileSystemInfo(GetFileSystemInfoRequest) returns (GetFileSystemInfoResponse);
+}
+
+message CreateFolderRequest {
+  uint64 group_id = 1; // 群号
+  string name = 2; // 文件夹名
+}
+
+message CreateFolderResponse {
+  uint64 id = 1; // 文件夹id
+  uint64 used_space = 2; // 已使用空间
+}
+
+message DeleteFolderRequest {
+  uint64 group_id = 1; // 群号
+  uint64 folder_id = 2; // 文件夹id
+}
+
+message DeleteFolderResponse {
+  bool success = 1; // 是否成功
+}
+
+message DeleteFileRequest {
+  uint64 group_id = 1; // 群号
+  string file_id = 2; // 文件id
+  int32 bus_id = 3; // 文件类型ID
+}
+
+message DeleteFileResponse {
+  bool success = 1; // 是否成功
+}
+
+message GetFileSystemInfoRequest {
+  uint64 group_id = 1; // 群号
+}
+
+message GetFileSystemInfoResponse {
+  uint32 file_count = 1; // 文件数量
+  uint32 total_count = 2; // 文件数量上限
+  uint32 used_space = 3; // 已使用空间
+  uint32 total_space = 4; // 空间上限
+}

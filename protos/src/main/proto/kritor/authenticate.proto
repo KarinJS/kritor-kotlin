@@ -8,8 +8,6 @@ option java_package = "io.kritor";
 
 import "kritor/descriptor.proto";
 
-/* 非常规定义接口 */
-
 service Authentication {
   rpc Auth (AuthReq) returns (AuthRsp) {
     option (kritor.require) = true;
@@ -38,6 +36,9 @@ enum AuthCode {
   LOGIC_ERROR = 3;
 }
 
+/*
+在某个账号授权成功之后，接下来所有的请求都必须围绕该账号，且禁止再次发送授权包。
+ */
 message AuthReq {
   string ticket = 1; // 客户端连接认证ticket
   string account = 2; // 客户端连接认证账号

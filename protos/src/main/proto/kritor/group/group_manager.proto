@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package kritor.group;
+
+option csharp_namespace = "Kritor.Group";
+option java_multiple_files = true;
+option java_package = "io.kritor.group";
+
+service GroupService {
+  rpc BanUser(BanUserRequest) returns (BanUserResponse);
+}
+
+message BanUserRequest {
+  uint64 user_id = 1; // 被禁言目标
+  uint64 group_id = 2; // 群组ID
+  uint64 duration = 3; // 禁言时长(单位：秒)
+}
+
+message BanUserResponse {
+  bool success = 1; // 是否成功，根据oidb返回的状态码进行判断即可
+}

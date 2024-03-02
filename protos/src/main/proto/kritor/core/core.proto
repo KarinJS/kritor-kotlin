@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package kritor.core;
+
+option csharp_namespace = "Kritor.Core";
+option java_multiple_files = true;
+option java_package = "io.kritor.core";
+
+
+service KritorService {
+  rpc ClearCache(ClearCacheRequest) returns (ClearCacheResponse) {}
+  rpc DownloadFile(DownloadFileRequest) returns (DownloadFileResponse) {} // 让Kritor下载文件到Kritor本地
+
+}
+
+message ClearCacheRequest {}
+
+message ClearCacheResponse {}
+
+message DownloadFileRequest {
+  string url = 1; // 下载文件的URL 二选一
+  string base64 = 2; // 下载文件的base64 二选一
+  string root_path = 3; // 下载文件的根目录 需要保证Kritor有该目录访问权限 可选
+  string file_name = 4; // 保存的文件名称 默认为文件MD5 可选
+  uint32 thread_cnt = 5; // 下载文件的线程数 默认为3 可选
+  string headers = 6; // 下载文件的请求头 可选
+}
+
+message DownloadFileResponse {
+  string file_absolute_path = 1; // 下载文件的绝对路径
+  string file_md5 = 2; // 下载文件的MD5
+}

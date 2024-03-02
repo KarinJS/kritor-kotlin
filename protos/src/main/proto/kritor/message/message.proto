@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package kritor.message;
+
+option csharp_namespace = "Kritor.Message";
+option java_multiple_files = true;
+option java_package = "io.kritor.message";
+
+import "kritor/message/scene.proto";
+import "kritor/message/comm_message.proto";
+
+service MessageService {
+  rpc ClearMessages(ClearMessagesRequest) returns (ClearMessagesResponse) {} // 清空本地聊天记录
+  rpc RecallMessage(RecallMessageRequest) returns (RecallMessageResponse) {} // 撤回消息
+
+  rpc GetForwardMessages(GetForwardMessagesRequest) returns (GetForwardMessagesResponse) {} // 获取转发消息
+}
+
+message ClearMessagesRequest {
+  Contact contact = 1; // 要清空的目标
+}
+
+message ClearMessagesResponse {}
+
+message RecallMessageRequest {
+  Contact contact = 1; // 要撤回的目标，私聊则为对方，而不是写自己
+  uint64 message_id = 2; // 要撤回的消息ID，消息id固有格式：前32bit为时间戳，后32bit为扩展字段，可携带聊天类型等各种信息
+}
+
+message RecallMessageResponse {
+  bool success = 1; // 是否成功
+}
+
+message GetForwardMessagesRequest {
+  string res_id = 1; // 资源ID
+}
+
+message GetForwardMessagesResponse {
+  repeated Message messages = 1; // 获取到的消息
+}
