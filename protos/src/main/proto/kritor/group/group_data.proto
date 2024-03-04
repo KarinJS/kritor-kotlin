@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package kritor.group;
+
+option csharp_namespace = "Kritor.Group";
+option java_multiple_files = true;
+option java_package = "io.kritor.group";
+
+message GroupInfo {
+  uint64 group_id = 1;
+  uint32 max_member_count = 2;
+  uint32 member_count = 3;
+  string group_name = 4;
+  string group_desc = 5;
+  uint64 owner = 6;
+  uint32 create_time = 7;
+
+  uint32 group_flag = 8; // 群聊类型什么的都在这里，如果获取不到可以不实现
+  uint32 group_flag_ext = 9; // 扩展群聊类型
+}

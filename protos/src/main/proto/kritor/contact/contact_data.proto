@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package kritor.contact;
+
+option csharp_namespace = "Kritor.Contact";
+option java_multiple_files = true;
+option java_package = "io.kritor.contact";
+
+message ProfileCard {
+  string uid = 1;
+  uint64 uin = 2;
+  string name = 3;
+  string remark = 4;
+  uint32 level = 5;
+  uint64 birthday = 6;
+  uint32 login_day = 7; // 登录天数
+  uint32 vote_cnt = 8; // 点赞数
+
+  /* 以下字段可以不实现 */
+  string qid = 50;
+  bool is_school_verified = 51;
+}

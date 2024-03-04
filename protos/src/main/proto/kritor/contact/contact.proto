@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package kritor.contact;
+
+option csharp_namespace = "Kritor.Contact";
+option java_multiple_files = true;
+option java_package = "io.kritor.contact";
+
+import "kritor/contact/contact_data.proto";
+
+service ContactService {
+  rpc GetProfileCard(ProfileCardRequest) returns (ProfileCard) {}
+}
+
+message ProfileCardRequest {
+  uint64 uin = 1; // 可选，uid和uin必须提供一个，两个都提供优先uin
+  string uid = 2; // 可选，uid和uin必须提供一个，两个都提供优先uin
+}
