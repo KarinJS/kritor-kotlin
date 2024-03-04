@@ -8,6 +8,8 @@ option java_package = "io.kritor.group";
 
 service GroupService {
   rpc BanUser(BanUserRequest) returns (BanUserResponse);
+
+  rpc GetRemainCountAtAll(GetRemainCountAtAllRequest) returns (GetRemainCountAtAllResponse); // 获取艾特全体成员剩余次数
 }
 
 message BanUserRequest {
@@ -18,4 +20,12 @@ message BanUserRequest {
 
 message BanUserResponse {
   bool success = 1; // 是否成功，根据oidb返回的状态码进行判断即可
+}
+
+message GetRemainCountAtAllRequest {
+  uint64 group_id = 1; // 群组ID
+}
+
+message GetRemainCountAtAllResponse {
+  uint32 remain_count = 1; // 剩余次数
 }

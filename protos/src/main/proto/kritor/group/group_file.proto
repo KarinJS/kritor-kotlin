@@ -13,6 +13,33 @@ service GroupFileService {
   rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
 
   rpc GetFileSystemInfo(GetFileSystemInfoRequest) returns (GetFileSystemInfoResponse);
+  rpc GetRootFiles(GetRootFilesRequest) returns (GetRootFilesResponse);
+  rpc GetFiles(GetFilesRequest) returns (GetFilesResponse);
+}
+
+message File {
+  string file_id = 1;
+  string file_name = 2;
+  uint64 file_size = 3;
+  int32 bus_id = 4;
+  uint32 upload_time = 5;
+  uint32 dead_time = 6;
+  uint32 modify_time = 7;
+  uint32 download_times = 8;
+  uint64 uploader = 9;
+  string uploader_name = 10;
+  string sha = 11;
+  string sha3 = 12;
+  string md5 = 13;
+}
+
+message Folder {
+  uint64 folder_id = 1;
+  string folder_name = 2;
+  uint32 total_file_count = 3;
+  uint32 create_time = 4;
+  uint64 creator = 5;
+  string creator_name = 6;
 }
 
 message CreateFolderRequest {
@@ -53,4 +80,23 @@ message GetFileSystemInfoResponse {
   uint32 total_count = 2; // 文件数量上限
   uint32 used_space = 3; // 已使用空间
   uint32 total_space = 4; // 空间上限
+}
+
+message GetRootFilesRequest {
+  uint64 group_id = 1; // 群号
+}
+
+message GetRootFilesResponse {
+  repeated File files = 1; // 文件列表
+  repeated Folder folders = 2;
+}
+
+message GetFilesRequest {
+  uint64 group_id = 1; // 群号
+  uint64 folder_id = 2; // 文件夹id
+}
+
+message GetFilesResponse {
+  repeated File files = 1; // 文件列表
+  repeated Folder folders = 2;
 }

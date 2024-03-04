@@ -11,6 +11,7 @@ service KritorService {
   rpc ClearCache(ClearCacheRequest) returns (ClearCacheResponse) {}
   rpc DownloadFile(DownloadFileRequest) returns (DownloadFileResponse) {} // 让Kritor下载文件到Kritor本地
 
+  rpc GetCurrentAccount(GetCurrentAccountRequest) returns (GetCurrentAccountResponse) {} // 获取当前账户信息
 }
 
 message ClearCacheRequest {}
@@ -29,4 +30,12 @@ message DownloadFileRequest {
 message DownloadFileResponse {
   string file_absolute_path = 1; // 下载文件的绝对路径
   string file_md5 = 2; // 下载文件的MD5
+}
+
+message GetCurrentAccountRequest {}
+
+message GetCurrentAccountResponse {
+  string account_uid = 1; // 当前账户
+  uint64 account_uin = 2;
+  string account_name = 3; // 当前账户名称
 }

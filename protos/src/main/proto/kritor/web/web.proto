@@ -10,6 +10,7 @@ service WebService {
   rpc GetCookies(GetCookiesRequest) returns (GetCookiesResponse) {}
   rpc GetCredentials(GetCredentialsRequest) returns (GetCredentialsResponse) {}
   rpc GetCSRFToken(GetCSRFTokenRequest) returns (GetCSRFTokenResponse) {}
+  rpc GetHttpCookies(GetCookiesRequest) returns (GetCookiesResponse) {}
 }
 
 message GetCookiesRequest {
@@ -35,4 +36,14 @@ message GetCSRFTokenRequest {
 
 message GetCSRFTokenResponse {
   string bkn = 1;
+}
+
+message GetHttpCookiesRequest {
+  string appid = 1;
+  string daid = 2;
+  string jump_url = 3;
+}
+
+message GetHttpCookiesResponse {
+  string cookie = 1;
 }
