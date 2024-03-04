@@ -20,3 +20,29 @@ message ProfileCard {
   string qid = 50;
   bool is_school_verified = 51;
 }
+
+message StrangerInfo {
+  string uid = 1;
+  uint64 uin = 2;
+  string name = 3;
+  uint32 level = 4;
+  uint32 login_day = 5; // 登录天数
+  uint32 vote_cnt = 6; // 点赞数
+  /* 以下字段可以不实现 */
+  string qid = 50;
+  bool is_school_verified = 51;
+
+  bytes ext = 99; // 扩展信息，根据协议平台提供的扩展信息
+}
+
+// 通用陌生人信息扩展字段
+// 所有第三方协议分发扩展字段，
+// 必须基于本字段修改，
+// 并保存定制的副本到本仓库特定路径！！
+message StrangerExt {
+  bool big_vip = 1; // 大会员
+  bool hollywood_vip = 2; // 好莱坞/腾讯视频会员
+  bool qq_vip = 3; // QQ会员
+  bool super_vip = 4; // QQ超级会员
+  bool voted = 5; // 是否已经赞过
+}
