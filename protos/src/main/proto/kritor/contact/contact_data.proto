@@ -17,8 +17,8 @@ message ProfileCard {
   uint32 vote_cnt = 8; // 点赞数
 
   /* 以下字段可以不实现 */
-  string qid = 50;
-  bool is_school_verified = 51;
+  optional string qid = 50;
+  optional bool is_school_verified = 51;
 }
 
 message StrangerInfo {
@@ -29,10 +29,10 @@ message StrangerInfo {
   uint32 login_day = 5; // 登录天数
   uint32 vote_cnt = 6; // 点赞数
   /* 以下字段可以不实现 */
-  string qid = 50;
-  bool is_school_verified = 51;
+  optional string qid = 50;
+  optional bool is_school_verified = 51;
 
-  bytes ext = 99; // 扩展信息，根据协议平台提供的扩展信息
+  optional bytes ext = 99; // 扩展信息，根据协议平台提供的扩展信息
 }
 
 // 通用陌生人信息扩展字段
@@ -40,9 +40,9 @@ message StrangerInfo {
 // 必须基于本字段修改，
 // 并保存定制的副本到本仓库特定路径！！
 message StrangerExt {
-  bool big_vip = 1; // 大会员
-  bool hollywood_vip = 2; // 好莱坞/腾讯视频会员
-  bool qq_vip = 3; // QQ会员
-  bool super_vip = 4; // QQ超级会员
-  bool voted = 5; // 是否已经赞过
+  optional bool big_vip = 1; // 大会员
+  optional bool hollywood_vip = 2; // 好莱坞/腾讯视频会员
+  optional bool qq_vip = 3; // QQ会员
+  optional bool super_vip = 4; // QQ超级会员
+  optional bool voted = 5; // 是否已经赞过
 }

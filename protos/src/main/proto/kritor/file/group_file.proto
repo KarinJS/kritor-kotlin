@@ -10,13 +10,15 @@ import "kritor/file/file_data.proto";
 
 service GroupFileService {
   rpc CreateFolder(CreateFolderRequest) returns (CreateFolderResponse); // 创建文件夹
-  rpc DeleteFolder(DeleteFolderRequest) returns (DeleteFolderResponse); // 删除文件夹
 
+  rpc DeleteFolder(DeleteFolderRequest) returns (DeleteFolderResponse); // 删除文件夹
   rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse); // 删除文件
 
+  rpc RenameFolder(RenameFolderRequest) returns (RenameFolderResponse); // 重命名文件夹
+
   rpc GetFileSystemInfo(GetFileSystemInfoRequest) returns (GetFileSystemInfoResponse); // 获取文件系统信息
-  rpc GetRootFiles(GetRootFilesRequest) returns (GetRootFilesResponse); // 获取根目录文件
-  rpc GetFiles(GetFilesRequest) returns (GetFilesResponse); // 获取文件夹下文件
+  rpc GetRootFiles(GetRootFilesRequest) returns (stream GetRootFilesResponse); // 获取根目录文件
+  rpc GetFiles(GetFilesRequest) returns (stream GetFilesResponse); // 获取文件夹下文件
 }
 
 message CreateFolderRequest {
@@ -35,7 +37,6 @@ message DeleteFolderRequest {
 }
 
 message DeleteFolderResponse {
-  bool success = 1; // 是否成功
 }
 
 message DeleteFileRequest {
@@ -45,7 +46,15 @@ message DeleteFileRequest {
 }
 
 message DeleteFileResponse {
-  bool success = 1; // 是否成功
+}
+
+message RenameFolderRequest {
+  uint64 group_id = 1; // 群号
+  uint64 folder_id = 2; // 文件夹id
+  string name = 3; // 文件夹名
+}
+
+message RenameFolderResponse {
 }
 
 message GetFileSystemInfoRequest {
@@ -64,8 +73,8 @@ message GetRootFilesRequest {
 }
 
 message GetRootFilesResponse {
-  repeated File files = 1; // 文件列表
-  repeated Folder folders = 2;
+  File files = 1; // 文件列表
+  Folder folders = 2;
 }
 
 message GetFilesRequest {
@@ -74,6 +83,6 @@ message GetFilesRequest {
 }
 
 message GetFilesResponse {
-  repeated File files = 1; // 文件列表
-  repeated Folder folders = 2;
+  File files = 1;
+  Folder folders = 2;
 }

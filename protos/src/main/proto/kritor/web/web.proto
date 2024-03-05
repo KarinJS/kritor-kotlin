@@ -14,7 +14,7 @@ service WebService {
 }
 
 message GetCookiesRequest {
-  string domain = 1; // The domain to get cookies from
+  optional string domain = 1; // The domain to get cookies from
 }
 
 message GetCookiesResponse {
@@ -22,7 +22,7 @@ message GetCookiesResponse {
 }
 
 message GetCredentialsRequest {
-  string domain = 1; // The domain to get credentials from
+  optional string domain = 1; // The domain to get credentials from
 }
 
 message GetCredentialsResponse {
@@ -31,7 +31,7 @@ message GetCredentialsResponse {
 }
 
 message GetCSRFTokenRequest {
-  string domain = 1; // The domain to get the CSRF token from
+  optional string domain = 1; // The domain to get the CSRF token from
 }
 
 message GetCSRFTokenResponse {

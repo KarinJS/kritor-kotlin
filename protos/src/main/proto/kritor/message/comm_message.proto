@@ -21,15 +21,25 @@ message MessageBody {
 message Sender {
   string nick = 1;
   string uid = 2;
-  uint64 uin = 3;
+  optional uint64 uin = 3;
 }
 
 enum ElementType {
   TEXT = 0;
 
+  NODE = 99;
 }
 
 message Element {
   ElementType type = 1;
 
+}
+
+message TextElement {
+  string text = 1;
+}
+
+message NodeElement {
+  Contact scene = 1;
+  uint64 message_id = 2;
 }

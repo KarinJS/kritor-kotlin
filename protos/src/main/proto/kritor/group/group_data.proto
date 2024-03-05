@@ -43,3 +43,29 @@ message GroupHonorInfo {
   uint32 id = 6; // 荣誉id
   string description = 7; // 荣誉描述
 }
+
+enum MemberRole {
+  ADMIN = 0;
+  MEMBER = 1;
+  OWNER = 2;
+  STRANGER = 3;
+}
+
+message GroupMemberInfo {
+  string uid = 1;
+  uint64 uin = 2;
+  string nick = 3;
+  uint32 age = 4;
+  string unique_title = 5;
+  uint32 unique_title_expire_time = 6;
+  string card = 7;
+  uint64 join_time = 8;
+  uint64 last_active_time = 9;
+  uint32 level = 10;
+  uint64 shut_up_timestamp = 11;
+
+  optional uint32 distance = 100;
+  repeated uint32 honor = 101;
+  optional bool unfriendly = 102;
+  optional bool card_changeable = 103;
+}

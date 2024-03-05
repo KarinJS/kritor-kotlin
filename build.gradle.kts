@@ -19,6 +19,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java-util:3.25.1")
     implementation("com.google.protobuf:protobuf-kotlin:3.25.3")
     implementation("io.grpc:grpc-kotlin-stub:1.4.1")
+    implementation("io.grpc:grpc-netty:1.62.2")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
