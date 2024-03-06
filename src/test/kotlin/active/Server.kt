@@ -1,6 +1,11 @@
+package active
+
 import io.grpc.ServerBuilder
 import services.Authentication
 
+/**
+ * 创建一个主动Grpc服务端
+ */
 class KritorServer(
     port: Int,
 ) {

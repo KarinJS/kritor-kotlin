@@ -2,70 +2,10 @@
 
 ## 请求与响应
 
-Grpc提供了`挂起/堵塞`和`异步`的两种请求方式。
+[主动Grpc](/docs/request/req_active.md): 主动与被动Grpc的行为有所差异，主动Grpc是客户端主动发起请求，服务端被动响应。主动Grpc提供了`挂起/堵塞`和`异步`的两种请求方式。
 
-### 异步 (流式传输)
-
-```kotlin
-suspend fun main() {
-    val channel = ManagedChannelBuilder
-        .forAddress("localhost", 8080)
-        .usePlaintext()
-        .enableRetry() // 允许尝试
-        .executor(Dispatchers.IO.asExecutor()) // 使用协程的调度器
-        .build()
-    
-    val observer: StreamObserver<AuthRsp> = object: StreamObserver<AuthRsp> {
-        override fun onCompleted() {
-
-        }
-
-        override fun onNext(rsp: AuthRsp?) {
-            // doSomething
-        }
-
-        override fun onError(e: Throwable?) {
-
-        }
-    }
-
-    AuthenticationGrpc.newStub(channel).auth(authReq {
-        account = "1145141919810"
-        ticket = "A123456"
-    }, observer)
-}
-```
-
-### 挂起
-
-```kotlin
-suspend fun main() {
-    val channel = ManagedChannelBuilder
-        .forAddress("localhost", 8080)
-        .usePlaintext()
-        .enableRetry() // 允许尝试
-        .executor(Dispatchers.IO.asExecutor()) // 使用协程的调度器
-        .build()
-
-    val stub = AuthenticationGrpcKt.AuthenticationCoroutineStub(channel)
-    val rsp = stub.auth(authReq {
-        account = "1145141919810"
-        ticket = "A123456"
-    })
-}
-```
-
-### 其它语言的请求示例
-
-- [Java](https://grpc.io/docs/languages/java/basics/#calling-service-methods)（同步请求）
-- [Java](https://grpc.io/docs/languages/java/basics/#client-side-streaming-rpc)（流式异步）
-- [C#](https://learn.microsoft.com/zh-cn/aspnet/core/tutorials/grpc/grpc-start?view=aspnetcore-8.0&tabs=visual-studio#create-the-grpc-client-in-a-net-console-app) （微软文档）
-- [C++](https://grpc.io/docs/languages/cpp/basics/#calling-service-methods)
-- [Golang](https://grpc.io/docs/languages/go/basics/#calling-service-methods)
-- [Node](https://grpc.io/docs/languages/node/basics/#calling-service-methods)
-- [Object-C](https://grpc.io/docs/languages/objective-c/basics/#calling-service-methods)
-- [PHP](https://grpc.io/docs/languages/php/basics/#calling-service-methods)
-- [Python](https://grpc.io/docs/languages/python/basics/#calling-service-methods)
+[被动Grpc](/docs/request/req_passive.md): 被动Grpc则为双向流式实现，客户端与服务端可以同时发送和接收数据。
+但是需要客户端对接收的数据进行`command`与`seq`的配对比较，才能拿到对应请求的数据包。
 
 ## 请求错误处理
 
@@ -128,4 +68,5 @@ Kritor提供了多种接口供客户端调用，包括但不限于以下服务�
 > - ### [消息服务](/docs/request/message.md)
 > 
 > - ### [文件服务](/docs/request/file.md)
+>
 > - ### [Web服务](/docs/request/web.md)

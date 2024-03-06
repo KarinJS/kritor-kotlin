@@ -9,5 +9,5 @@ option java_package = "io.kritor";
 import "kritor/comm_request.proto";
 
 service ReverseService {
-  rpc ReverseStream(stream Request) returns (stream Response) {}
+  rpc ReverseStream(stream Response) returns (stream Request) {}
 }

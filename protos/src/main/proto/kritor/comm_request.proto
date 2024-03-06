@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option csharp_namespace = "Kritor";
+option csharp_namespace = "Kritor.Reverse";
 option java_multiple_files = true;
-option java_package = "io.kritor";
+option java_package = "io.kritor.reverse";
 
 package kritor;
 
@@ -19,8 +19,8 @@ message Request {
   bool noRsp = 4; // no response
 }
 
-enum Code {
-  OK = 0;
+enum ReqCode {
+  SUCCESS = 0;
   INVALID_ARGUMENT = 1;
   INTERNAL = 2;
   UNAUTHENTICATED = 3;
@@ -30,7 +30,7 @@ enum Code {
 message Response {
   string cmd = 1;
 
-  int32 code = 2;
+  ReqCode code = 2;
   optional string msg = 3;
 
   bytes buf = 4;

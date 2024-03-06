@@ -1,23 +1,17 @@
+package active
+
+import io.grpc.Channel
 import io.grpc.ManagedChannelBuilder
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 import io.kritor.AuthRsp
 import io.kritor.AuthenticationGrpc
-import io.kritor.AuthenticationGrpc.AuthenticationStub
 import io.kritor.AuthenticationGrpcKt
 import io.kritor.authReq
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 
-suspend fun main() {
-    val channel = ManagedChannelBuilder
-        .forAddress("localhost", 8080)
-        .usePlaintext()
-        .enableRetry() // 允许尝试
-        .executor(Dispatchers.IO.asExecutor()) // 使用协程的调度器
-        .build()
-
-
+fun async(channel: Channel) {
     val observer: StreamObserver<AuthRsp> = object: StreamObserver<AuthRsp> {
         override fun onCompleted() {
 
@@ -35,8 +29,10 @@ suspend fun main() {
     AuthenticationGrpc.newStub(channel).auth(authReq {
         account = "1145141919810"
         ticket = "A123456"
-    }, observer)
+    }, observer) // 主动grpc请求
+}
 
+suspend fun await(channel: Channel) {
     val stub = AuthenticationGrpcKt.AuthenticationCoroutineStub(channel)
     runCatching {
         val rsp = stub.auth(authReq {
@@ -50,6 +46,18 @@ suspend fun main() {
         println(status.code)
         println(status.description)
     }
+}
+
+suspend fun main() {
+    val channel = ManagedChannelBuilder
+        .forAddress("localhost", 8080)
+        .usePlaintext()
+        .enableRetry() // 允许尝试
+        .executor(Dispatchers.IO.asExecutor()) // 使用协程的调度器
+        .build()
 
 
+    async(channel) // 异步grpc请求
+
+    await(channel) // 同步grpc请求
 }

@@ -48,3 +48,68 @@ WebUI通过superTicket获取鉴权ticket，用于实现远程控制kritor。
 - **方法名**: `GetTicket`
 - **请求类型**: `GetTicketReq`
 - **响应类型**: `GetTicketRsp`
+
+### 请求
+
+```protobuf
+message TicketReq {
+  string account = 1; // 客户端连接认证账号
+  string ticket = 2; // 客户端连接认证super ticket
+}
+
+message TicketRsp {
+  int32 code = 1;
+  string msg = 2;
+  repeated string ticket = 3; // 返回的客户端ticket，非super ticket
+}
+```
+
+## 删除鉴权Ticket （WebUI）
+
+WebUI通过superTicket删除鉴权ticket，用于实现远程控制kritor。
+
+### 参数
+
+- **方法名**: `DeleteTicket`
+- **请求类型**: `DeleteTicketReq`
+- **响应类型**: `DeleteTicketRsp`
+
+### 请求
+
+```protobuf
+message DeleteTicketReq {
+  string account = 1; // 客户端连接认证账号
+  string ticket = 2; // 客户端连接认证super ticket
+  string deleted_ticket = 3;
+}
+
+message DeleteTicketRsp {
+  int32 code = 1;
+  string msg = 2;
+}
+```
+
+## 添加鉴权Ticket （WebUI）
+
+WebUI通过superTicket添加鉴权ticket，用于实现远程控制kritor。
+
+### 参数
+
+- **方法名**: `AddTicket`
+- **请求类型**: `AddTicketReq`
+- **响应类型**: `AddTicketRsp`
+
+### 请求
+
+```protobuf
+message AddTicketReq {
+  string account = 1; // 客户端连接认证账号
+  string ticket = 2; // 客户端连接认证super ticket
+  string new_ticket = 3;
+}
+
+message AddTicketRsp {
+  int32 code = 1;
+  string msg = 2;
+}
+```
