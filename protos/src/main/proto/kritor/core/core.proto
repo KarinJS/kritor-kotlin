@@ -6,7 +6,6 @@ option csharp_namespace = "Kritor.Core";
 option java_multiple_files = true;
 option java_package = "io.kritor.core";
 
-
 service KritorService {
   rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {} // 获取Kritor版本
   rpc ClearCache(ClearCacheRequest) returns (ClearCacheResponse) {}

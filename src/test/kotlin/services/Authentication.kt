@@ -14,6 +14,7 @@ object Authentication: AuthenticationGrpcKt.AuthenticationCoroutineImplBase() {
                 code = AuthCode.OK
             }
         }
+
         throw StatusException(Status.UNAUTHENTICATED.withDescription("6666"))
         return authRsp {
             code = AuthCode.NO_ACCOUNT

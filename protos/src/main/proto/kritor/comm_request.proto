@@ -19,9 +19,20 @@ message Request {
   bool noRsp = 4; // no response
 }
 
+enum Code {
+  OK = 0;
+  INVALID_ARGUMENT = 1;
+  INTERNAL = 2;
+  UNAUTHENTICATED = 3;
+  PERMISSION_DENIED = 4;
+}
+
 message Response {
   string cmd = 1;
+
   int32 code = 2;
-  bytes buf = 3;
-  uint32 seq = 4;
+  optional string msg = 3;
+
+  bytes buf = 4;
+  uint32 seq = 5;
 }
