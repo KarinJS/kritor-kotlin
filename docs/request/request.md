@@ -55,6 +55,18 @@ suspend fun main() {
 }
 ```
 
+### 其它语言的请求示例
+
+- [Java](https://grpc.io/docs/languages/java/basics/#calling-service-methods)（同步请求）
+- [Java](https://grpc.io/docs/languages/java/basics/#client-side-streaming-rpc)（流式异步）
+- [C#](https://learn.microsoft.com/zh-cn/aspnet/core/tutorials/grpc/grpc-start?view=aspnetcore-8.0&tabs=visual-studio#create-the-grpc-client-in-a-net-console-app) （微软文档）
+- [C++](https://grpc.io/docs/languages/cpp/basics/#calling-service-methods)
+- [Golang](https://grpc.io/docs/languages/go/basics/#calling-service-methods)
+- [Node](https://grpc.io/docs/languages/node/basics/#calling-service-methods)
+- [Object-C](https://grpc.io/docs/languages/objective-c/basics/#calling-service-methods)
+- [PHP](https://grpc.io/docs/languages/php/basics/#calling-service-methods)
+- [Python](https://grpc.io/docs/languages/python/basics/#calling-service-methods)
+
 ## 请求错误处理
 
 当Kritor端无法正常处理某个请求，或者请求失败的时候，将会使用Grpc的错误码来返回错误信息。 其中大量错误信息的描述通常在``status.description``中。
@@ -101,7 +113,19 @@ suspend fun main() {
 
 更多语言请查看[Grpc官方错误处理示例](https://grpc.io/docs/guides/error/)。
 
-## 实现接口大全
+## 实现接口
 
 Kritor提供了多种接口供客户端调用，包括但不限于以下服务：
 
+> - ### [鉴权服务](/docs/request/authentication.md)
+>
+> - ### [核心服务](/docs/request/core.md)
+>
+> - ### [群聊服务](/docs/request/group.md)
+> 
+> - ### [好友服务](/docs/request/friend.md)
+> 
+> - ### [消息服务](/docs/request/message.md)
+> 
+> - ### [文件服务](/docs/request/file.md)
+> - ### [Web服务](/docs/request/web.md)
