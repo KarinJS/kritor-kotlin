@@ -4,8 +4,8 @@ Kritor使用Grpc强力驱动，提供了多种语言的客户端示例。
 
 ## 连接方式
 
-- [主动RPC](): Kritor作为Server，客户端（Bot）作为Client连接。**（推荐）**
-- [被动RPC](): Kritor作为Client，客户端（Bot）作为Server连接。
+- [主动RPC](/docs/request/req_active.md): Kritor作为Server，客户端（Bot）作为Client连接。**（推荐）**
+- [被动RPC](/docs/request/req_passive.md): Kritor作为Client，客户端（Bot）作为Server连接。
 
 ## 请求
 
