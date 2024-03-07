@@ -21,14 +21,14 @@ service GroupService {
   rpc SetGroupWholeBan(SetGroupWholeBanRequest) returns (SetGroupWholeBanResponse); // 设置全员禁言
 
   rpc GetGroupInfo(GetGroupInfoRequest) returns (GetGroupInfoResponse); // 获取群信息
-  rpc GetGroupList(GetGroupListRequest) returns (stream GetGroupListResponse); // 获取群列表
+  rpc GetGroupList(GetGroupListRequest) returns (GetGroupListResponse); // 获取群列表
   rpc GetGroupMemberInfo(GetGroupMemberInfoRequest) returns (GetGroupMemberInfoResponse); // 获取群成员信息
-  rpc GetGroupMemberList(GetGroupMemberListRequest) returns (stream GetGroupMemberListResponse); // 获取群成员列表
+  rpc GetGroupMemberList(GetGroupMemberListRequest) returns (GetGroupMemberListResponse); // 获取群成员列表
 
-  rpc GetProhibitedUserList(GetProhibitedUserListRequest) returns (stream GetProhibitedUserListResponse); // 获取禁言用户列表
+  rpc GetProhibitedUserList(GetProhibitedUserListRequest) returns (GetProhibitedUserListResponse); // 获取禁言用户列表
   rpc GetRemainCountAtAll(GetRemainCountAtAllRequest) returns (GetRemainCountAtAllResponse); // 获取艾特全体成员剩余次数
   rpc GetNotJoinedGroupInfo(GetNotJoinedGroupInfoRequest) returns (GetNotJoinedGroupInfoResponse); // 获取未加入群组信息
-  rpc GetGroupHonor(GetGroupHonorRequest) returns (stream GetGroupHonorResponse); // 获取群荣誉信息
+  rpc GetGroupHonor(GetGroupHonorRequest) returns (GetGroupHonorResponse); // 获取群荣誉信息
 }
 
 message BanMemberRequest {
@@ -128,7 +128,7 @@ message GetGroupListRequest {
 }
 
 message GetGroupListResponse {
-  GroupInfo group_info = 1; // 群组信息
+  repeated GroupInfo group_info = 1; // 群组信息
 }
 
 message GetGroupMemberInfoRequest {
@@ -147,7 +147,7 @@ message GetGroupMemberListRequest {
 }
 
 message GetGroupMemberListResponse {
-  GroupMemberInfo group_member_info = 1; // 群成员信息
+  repeated GroupMemberInfo group_member_info = 1; // 群成员信息
 }
 
 message GetProhibitedUserListRequest {
@@ -155,7 +155,7 @@ message GetProhibitedUserListRequest {
 }
 
 message GetProhibitedUserListResponse {
-  ProhibitedUserInfo prohibited_user_info = 1; // 禁言用户信息
+  repeated ProhibitedUserInfo prohibited_user_info = 1; // 禁言用户信息
 }
 
 message GetRemainCountAtAllRequest {
@@ -180,5 +180,5 @@ message GetGroupHonorRequest {
 }
 
 message GetGroupHonorResponse {
-  GroupHonorInfo group_honor_info = 1; // 群荣誉信息
+  repeated GroupHonorInfo group_honor_info = 1; // 群荣誉信息
 }

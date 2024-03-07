@@ -13,9 +13,9 @@ service ContactService {
   rpc GetStrangerInfo(StrangerInfoRequest) returns (StrangerInfo) {} // 获取陌生人信息
 
   rpc GetUid(GetUidRequest) returns (GetUidResponse) {} // 获取uid
-  rpc GetUinByUid(GetUidRequest) returns (GetUidResponse) {} // 获取uin
+  rpc GetUinByUid(GetUinByUidRequest) returns (GetUinByUidResponse) {} // 获取uin
 
-  rpc SetProfileCard(ProfileCard) returns (ProfileCard) {} // 设置自己的名片
+  rpc SetProfileCard(SetProfileCardRequest) returns (SetProfileCardResponse) {} // 设置自己的名片
 
   rpc IsBlackListUser(IsBlackListUserRequest) returns (IsBlackListUserResponse) {} // 是否是黑名单用户
   rpc VoteUser(VoteUserRequest) returns (VoteUserResponse) {} // 点赞好友

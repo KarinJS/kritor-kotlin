@@ -7,7 +7,7 @@ Kritor提供的基础鉴权操作，可避免grpc泄露导致的被骇入操作�
 - **服务名**: `Authentication`
 - **Java包名**: `io.kritor`
 - **C#命名空间**: `Kritor`
-- **[source proto file](https://github.com/whitechi73/kritor/blob/master/protos/src/main/proto/kritor/authenticate.proto)**
+- **[source proto file](/protos/src/main/proto/kritor/authenticate.proto)**
 
 ## 鉴权
 
@@ -19,7 +19,7 @@ Kritor提供的基础鉴权操作，可避免grpc泄露导致的被骇入操作�
 - **请求类型**: `AuthReq`
 - **响应类型**: `AuthRsp`
 
-### 请求
+### 请求与响应
 
 ```protobuf
 enum AuthCode {
@@ -49,7 +49,7 @@ WebUI通过superTicket获取鉴权ticket，用于实现远程控制kritor。
 - **请求类型**: `GetTicketReq`
 - **响应类型**: `GetTicketRsp`
 
-### 请求
+### 请求与响应
 
 ```protobuf
 message TicketReq {
@@ -74,7 +74,7 @@ WebUI通过superTicket删除鉴权ticket，用于实现远程控制kritor。
 - **请求类型**: `DeleteTicketReq`
 - **响应类型**: `DeleteTicketRsp`
 
-### 请求
+### 请求与响应
 
 ```protobuf
 message DeleteTicketReq {
@@ -99,7 +99,7 @@ WebUI通过superTicket添加鉴权ticket，用于实现远程控制kritor。
 - **请求类型**: `AddTicketReq`
 - **响应类型**: `AddTicketRsp`
 
-### 请求
+### 请求与响应
 
 ```protobuf
 message AddTicketReq {

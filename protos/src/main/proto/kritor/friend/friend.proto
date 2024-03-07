@@ -9,7 +9,7 @@ option java_package = "io.kritor.friend";
 import "kritor/friend/firend_data.proto";
 
 service FriendService {
-  rpc GetFriendList (GetFriendListRequest) returns (stream GetFriendListResponse); // 获取好友列表
+  rpc GetFriendList (GetFriendListRequest) returns (GetFriendListResponse); // 获取好友列表
 }
 
 message GetFriendListRequest {
@@ -17,5 +17,5 @@ message GetFriendListRequest {
 }
 
 message GetFriendListResponse {
-  FriendData friendList = 1;
+  repeated FriendData friendList = 1;
 }
