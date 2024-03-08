@@ -75,8 +75,11 @@ message GroupMemberInfo {
 ```protobuf
 message BanMemberRequest {
   uint64 group_id = 1; // 群组ID
-  uint64 user_id = 2; // 被禁言目标
-  uint64 duration = 3; // 禁言时长(单位：秒)
+  oneof target{
+    string target_uid = 2; // 被禁言目标uid
+    uint64 target_uin = 3; // 被禁言目标uin
+  }
+  uint64 duration = 4; // 禁言时长(单位：秒)
 }
 
 message BanMemberResponse {
@@ -98,7 +101,10 @@ message BanMemberResponse {
 ```protobuf
 message PokeMemberRequest {
   uint64 group_id = 1; // 群组ID
-  uint64 user_id = 2; // 被戳一戳目标
+  oneof target{
+    string target_uid = 2; // 被戳目标uid
+    uint64 target_uin = 3; // 被戳目标uin
+  }
 }
 
 message PokeMemberResponse {
@@ -120,8 +126,11 @@ message PokeMemberResponse {
 ```protobuf
 message KickMemberRequest {
   uint64 group_id = 1; // 群组ID
-  uint64 user_id = 2; // 被踢出目标
-  optional bool reject_add_request = 3; // 是否拒绝再次申请 默认false
+  oneof target{
+    string target_uid = 2; // 被踢目标uid
+    uint64 target_uin = 3; // 被踢目标uin
+  }
+  optional bool reject_add_request = 4; // 是否拒绝再次申请 默认false
 }
 
 message KickMemberResponse {
@@ -164,8 +173,11 @@ message LeaveGroupResponse {
 ```protobuf
 message ModifyMemberCardRequest {
   uint64 group_id = 1; // 群组ID
-  uint64 user_id = 2; // 用户ID
-  string card = 3; // 新的群名片
+  oneof target{
+    string target_uid = 2; // 目标uid
+    uint64 target_uin = 3; // 目标uin
+  }
+  string card = 4; // 新的群名片
 }
 
 message ModifyMemberCardResponse {
@@ -231,8 +243,11 @@ message ModifyGroupRemarkResponse {
 ```protobuf
 message SetGroupAdminRequest {
   uint64 group_id = 1; // 群组ID
-  uint64 user_id = 2; // 用户ID
-  bool is_admin = 3; // 是否设置为管理员
+  oneof target{
+    string target_uid = 2; // 目标uid
+    uint64 target_uin = 3; // 目标uin
+  }
+  bool is_admin = 4; // 是否设置为管理员
 }
 
 message SetGroupAdminResponse {
@@ -254,8 +269,11 @@ message SetGroupAdminResponse {
 ```protobuf
 message SetGroupUniqueTitleRequest {
   uint64 group_id = 1; // 群组ID
-  uint64 user_id = 2; // 用户ID
-  string unique_title = 3; // 新的群头衔
+  oneof target{
+    string target_uid = 2; // 目标uid
+    uint64 target_uin = 3; // 目标uin
+  }
+  string unique_title = 4; // 新的群头衔
 }
 
 message SetGroupUniqueTitleResponse {
@@ -343,8 +361,11 @@ message GetGroupListResponse {
 ```protobuf
 message GetGroupMemberInfoRequest {
   uint64 group_id = 1; // 群组ID
-  uint64 uin = 2; // 用户ID
-  optional bool refresh = 3; // 是否刷新缓存
+  oneof target{
+    string uid = 2; // 目标uid
+    uint64 uin = 3; // 目标uin
+  }
+  optional bool refresh = 4; // 是否刷新缓存
 }
 
 message GetGroupMemberInfoResponse {
@@ -389,8 +410,9 @@ message GetGroupMemberListResponse {
 
 ```protobuf
 message ProhibitedUserInfo {
-  uint64 uin = 1;
-  uint32 prohibited_time = 2;
+  string uid = 1;
+  uint64 uin = 2;
+  uint32 prohibited_time = 3;
 }
 
 message GetProhibitedUserListRequest {
@@ -473,6 +495,7 @@ message GetNotJoinedGroupInfoResponse {
 
 ```protobuf
 message GroupHonorInfo {
+  string uid = 1; // 荣誉成员uid
   uint64 uin = 2; // 荣誉成员uin
   string nick = 3; // 荣誉成员昵称
   string honor_name = 4; // 荣誉名称

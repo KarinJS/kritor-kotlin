@@ -8,7 +8,7 @@ option java_package = "io.kritor.friend";
 
 message FriendData {
   string uid = 1; // uid 'u_*********'
-  uint64 uin = 2; // qq，如果没有可不提供
+  uint64 uin = 2; // qq 如果没有可不提供
   string qid = 3; // qid 用户自定义的qid 如若没有则为空
 
   string nick = 4; // 名称

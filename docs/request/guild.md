@@ -286,7 +286,7 @@ message GetGuildMemberListResponse {
 ```protobuf
 message GetGuildMemberRequest {
   uint64 guild_id = 1; // 频道ID
-  uint64 user_id = 2; // 成员tinyId
+  uint64 tiny_id = 2; // 成员tinyId
 }
 
 message GetGuildMemberResponse {
@@ -416,7 +416,7 @@ message SetGuildMemberRoleRequest {
   uint64 role_id = 2; // 角色ID
   bool set = 3; // 设置还是移除，默认false
   repeated string users = 4; // 批量设置用户s
-  int64 user_id = 5; // 单独设置某个用户的身份
+  int64 tiny_id = 5; // 单独设置某个用户的身份
 }
 
 message SetGuildMemberRoleResponse {

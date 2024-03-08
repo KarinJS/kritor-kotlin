@@ -50,8 +50,10 @@ message GetCurrentAccountResponse {
 }
 
 message SwitchAccountRequest {
-  optional string account_uid = 1; // 切换账户 二选一
-  optional uint64 account_uin = 2; // 切换账户 二选一
+  oneof account {
+    string account_uid = 1; // 切换账户uid
+    uint64 account_uin = 2; // 切换账户uin
+  }
   string super_ticket = 3; // 凭证
 }
 
