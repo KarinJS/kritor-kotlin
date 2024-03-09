@@ -6,24 +6,18 @@ option csharp_namespace = "Kritor";
 option java_multiple_files = true;
 option java_package = "io.kritor";
 
-import "kritor/descriptor.proto";
-
 service Authentication {
   rpc Auth (AuthReq) returns (AuthRsp) {
-    option (kritor.require) = true;
   }
 
   rpc GetTicket (GetTicketReq) returns (GetTicketRsp) {
-    option (kritor.require) = false;
     //option (kritor.desc) = "TicketRsp.ticket为空/empty则表示没有ticket，无需鉴权";
   }
 
   rpc DeleteTicket (DeleteTicketReq) returns (DeleteTicketRsp) {
-    option (kritor.require) = false;
   }
 
   rpc AddTicket (AddTicketReq) returns (AddTicketRsp) {
-    option (kritor.require) = false;
   }
 }
 

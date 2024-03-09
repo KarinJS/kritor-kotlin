@@ -98,5 +98,5 @@ message RolesInfo  {
   uint64 max_count = 6; // 最大成员数
   uint64 member_count = 7; // 成员数
   bool owned = 8; // 是否拥有
-  repeated Permission permissions = 9; // 权限
+  repeated PermissionInfo permissions = 9; // 权限
 }
