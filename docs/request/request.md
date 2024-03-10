@@ -86,7 +86,10 @@ ContactServiceGrpcKt.ContactServiceCoroutineStub(channel).getProfileCard(profile
 
 ### 被动RPC
 
-无任何鉴权操作，也无需鉴权操作。
+Kritor端将携带`ticket`在元数据，发起双向流请求，Bot端作为Server可实现一个拦截器...去实现鉴权！
+
+- [Go语言拦截器示例](https://golang2.eddycjy.com/posts/ch3/08-grpc-interceptor/)
+- [NodeJs拦截器示例](https://juejin.cn/post/6844904016221044750)
 
 ## 实现接口
 
