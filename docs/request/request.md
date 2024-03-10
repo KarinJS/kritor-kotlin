@@ -67,6 +67,27 @@ Kritor推送的返回包将会提供以下状态码：
 
 详细信息可以查看，请求包与返回包的[定义](/protos/src/main/proto/kritor/comm_request.proto)。
 
+## 鉴权操作
+
+如果需要进行鉴权操作的校验，可以查看[鉴权服务](/docs/request/authentication.md)。
+
+如果确保`ticket`可用，请在每次请求的元数据中携带鉴权`ticket`，下面是一个简单的示例：
+
+### 主动RPC
+
+```kotlin
+ContactServiceGrpcKt.ContactServiceCoroutineStub(channel).getProfileCard(profileCardRequest {
+    uin = 114514 
+}, Metadata().also { 
+    // 114514就是你的ticket
+    it.put(Metadata.Key.of("ticket", Metadata.ASCII_STRING_MARSHALLER), "114514")
+})
+```
+
+### 被动RPC
+
+无任何鉴权操作，也无需鉴权操作。
+
 ## 实现接口
 
 Kritor提供了多种接口供客户端调用，包括但不限于以下服务：
