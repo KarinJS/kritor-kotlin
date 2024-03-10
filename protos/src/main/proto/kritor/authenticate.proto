@@ -10,6 +10,9 @@ service Authentication {
   rpc Auth (AuthReq) returns (AuthRsp) {
   }
 
+  rpc GetAuthState(GetAuthStateReq) returns (GetAuthStateRsp) {
+  }
+
   rpc GetTicket (GetTicketReq) returns (GetTicketRsp) {
     //option (kritor.desc) = "TicketRsp.ticket为空/empty则表示没有ticket，无需鉴权";
   }
@@ -39,6 +42,14 @@ message AuthReq {
 message AuthRsp {
   AuthCode code = 1; // 认证结果
   string msg = 2; // 错误信息
+}
+
+message GetAuthStateReq {
+  string account = 1; // 客户端连接认证账号
+}
+
+message GetAuthStateRsp {
+  bool is_required_auth = 1; // 是否需要认证
 }
 
 /* 所有对认证ticket增删查都需要使用super ticket */

@@ -39,6 +39,29 @@ message AuthRsp {
   string msg = 2; // 错误信息
 }
 ```
+
+## 获取是否需要鉴权
+
+获取是否需要在元数据携带鉴权信息。
+
+### 参数
+
+- **方法名**: `GetAuthState`
+- **请求类型**: `GetAuthStateReq`
+- **响应类型**: `GetAuthStateRsp`
+
+### 请求与响应
+
+```protobuf
+message GetAuthStateReq {
+  string account = 1; // 客户端连接认证账号
+}
+
+message GetAuthStateRsp {
+  bool is_required_auth = 1; // 是否需要认证
+}
+```
+
 ## 获取鉴权Ticket （WebUI）
 
 WebUI通过superTicket获取鉴权ticket，用于实现远程控制kritor。
