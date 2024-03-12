@@ -33,7 +33,7 @@ message CreateFolderResponse {
 
 message DeleteFolderRequest {
   uint64 group_id = 1; // 群号
-  uint64 folder_id = 2; // 文件夹id
+  string folder_id = 2; // 文件夹id
 }
 
 message DeleteFolderResponse {
@@ -50,7 +50,7 @@ message DeleteFileResponse {
 
 message RenameFolderRequest {
   uint64 group_id = 1; // 群号
-  uint64 folder_id = 2; // 文件夹id
+  string folder_id = 2; // 文件夹id
   string name = 3; // 文件夹名
 }
 
@@ -79,7 +79,7 @@ message GetRootFilesResponse {
 
 message GetFilesRequest {
   uint64 group_id = 1; // 群号
-  uint64 folder_id = 2; // 文件夹id
+  string folder_id = 2; // 文件夹id
 }
 
 message GetFilesResponse {

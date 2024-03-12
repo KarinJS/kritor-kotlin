@@ -34,7 +34,7 @@ message File {
 
 ```protobuf
 message Folder {
-  uint64 folder_id = 1;
+  string folder_id = 1;
   string folder_name = 2;
   uint32 total_file_count = 3;
   uint32 create_time = 4;
@@ -62,7 +62,7 @@ message CreateFolderRequest {
 }
 
 message CreateFolderResponse {
-  uint64 id = 1; // 文件夹id
+  string id = 1; // 文件夹id
   uint64 used_space = 2; // 已使用空间
 }
 ```
@@ -82,7 +82,7 @@ message CreateFolderResponse {
 ```protobuf
 message DeleteFolderRequest {
   uint64 group_id = 1; // 群号
-  uint64 folder_id = 2; // 文件夹id
+  string folder_id = 2; // 文件夹id
 }
 
 message DeleteFolderResponse {
@@ -127,7 +127,7 @@ message DeleteFileResponse {
 ```protobuf
 message RenameFolderRequest {
   uint64 group_id = 1; // 群号
-  uint64 folder_id = 2; // 文件夹id
+  string folder_id = 2; // 文件夹id
   string name = 3; // 文件夹名
 }
 
@@ -198,7 +198,7 @@ message GetRootFilesResponse {
 ```protobuf
 message GetFilesRequest {
   uint64 group_id = 1; // 群号
-  uint64 folder_id = 2; // 文件夹id
+  string folder_id = 2; // 文件夹id
 }
 
 message GetFilesResponse {

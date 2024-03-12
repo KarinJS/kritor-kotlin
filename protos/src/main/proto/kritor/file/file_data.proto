@@ -23,7 +23,7 @@ message File {
 }
 
 message Folder {
-  uint64 folder_id = 1;
+  string folder_id = 1;
   string folder_name = 2;
   uint32 total_file_count = 3;
   uint32 create_time = 4;
