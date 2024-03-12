@@ -131,6 +131,7 @@ message KickMemberRequest {
     uint64 target_uin = 3; // 被踢目标uin
   }
   optional bool reject_add_request = 4; // 是否拒绝再次申请 默认false
+  optional string kick_reason = 5; // 踢出原因，可选
 }
 
 message KickMemberResponse {
