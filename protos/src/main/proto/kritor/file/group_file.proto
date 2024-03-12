@@ -27,7 +27,7 @@ message CreateFolderRequest {
 }
 
 message CreateFolderResponse {
-  uint64 id = 1; // 文件夹id
+  string id = 1; // 文件夹id
   uint64 used_space = 2; // 已使用空间
 }
 
