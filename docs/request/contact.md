@@ -23,8 +23,10 @@
 
 ```protobuf
 message ProfileCardRequest {
-  optional uint64 uin = 1; // 可选，uid和uin必须提供一个，两个都提供优先uin
-  optional string uid = 2; // 可选，uid和uin必须提供一个，两个都提供优先uin
+  oneof account {
+    uint64 uin = 1; // 可选，uid和uin必须提供一个，两个都提供优先uin
+    string uid = 2; // 可选，uid和uin必须提供一个，两个都提供优先uin
+  }
 }
 
 message ProfileCard {
@@ -194,8 +196,10 @@ message IsBlackListUserResponse {
 
 ```protobuf
 message VoteUserRequest {
-  optional uint64 uin = 1; // 可选，uid和uin必须提供一个，两个都提供优先uin
-  optional string uid = 2; // 可选，uid和uin必须提供一个，两个都提供优先uin
+  oneof account {
+    uint64 uin = 1; // 可选，uid和uin必须提供一个，两个都提供优先uin
+    string uid = 2; // 可选，uid和uin必须提供一个，两个都提供优先uin
+  }
   optional uint32 vote_count = 3; // 可选，点赞数量，默认1
 }
 
