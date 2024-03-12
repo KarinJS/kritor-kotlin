@@ -443,7 +443,9 @@ message GetRemainCountAtAllRequest {
 }
 
 message GetRemainCountAtAllResponse {
-  uint32 remain_count = 1; // 剩余次数
+  uint32 remain_count_for_group = 1; // 剩余次数对于全群
+  bool access_at_all = 2;
+  uint32 remain_count_for_self = 3; // 剩余次数对于自己
 }
 ```
 
