@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package kritor.event;
+
+option csharp_namespace = "Kritor.Event";
+option java_multiple_files = true;
+option java_package = "io.kritor.event";
+
+enum EventType {
+  CORE_EVENT = 0;
+  MESSAGE = 1;
+  NOTICE = 2;
+  REQUEST = 3;
+}
+
+message EventRequest {
+  EventType type = 1;
+}
+
+message EventStructure {
+  EventType type = 1;
+  //MessageEvent message = 2;
+}

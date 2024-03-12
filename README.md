@@ -44,5 +44,5 @@ extend google.protobuf.MethodOptions {
 ## 接入状态
 
 - [Shamrock](https://github.com/whitechi73/OpenShamrock): **v1.1.0+**
-- [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core): **unknown**
+- [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core): **0.0.3+**
   - **[Lagrange.Kritor](https://github.com/LagrangeDev/Lagrange.Kritor)**: 一个**Kritor**在C#的实现。

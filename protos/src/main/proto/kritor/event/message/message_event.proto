@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package kritor.event.message;
+
+option csharp_namespace = "Kritor.Event.Message";
+option java_multiple_files = true;
+option java_package = "io.kritor.event.message";
+
+

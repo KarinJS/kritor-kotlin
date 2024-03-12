@@ -3,6 +3,7 @@ package passive
 import io.grpc.ServerBuilder
 import io.kritor.ReverseServiceGrpcKt
 import io.kritor.authReq
+import io.kritor.event.*
 import io.kritor.reverse.Request
 import io.kritor.reverse.Response
 import io.kritor.reverse.request
@@ -49,6 +50,16 @@ class PassiveKritorServer(
                         delay(10) // 没有就等待
                     }
                 }
+            }
+        })
+        .addService(object: EventServiceGrpcKt.EventServiceCoroutineImplBase() {
+            override suspend fun registerPassiveListener(requests: Flow<EventStructure>): EventRequest {
+                requests.collect {
+                    if (it.type == EventType.MESSAGE) {
+                        // 处理消息事件
+                    }
+                }
+                return eventRequest {  }
             }
         })
         .build()!!
