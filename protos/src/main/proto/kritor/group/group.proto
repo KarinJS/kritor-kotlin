@@ -37,6 +37,7 @@ message BanMemberRequest {
     string target_uid = 2; // 被禁言目标uid
     uint64 target_uin = 3; // 被禁言目标uin
   }
+  uint32 duration = 4; // 单位：秒
 }
 
 message BanMemberResponse {
