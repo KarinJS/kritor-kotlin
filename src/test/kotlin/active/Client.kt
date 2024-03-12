@@ -8,6 +8,9 @@ import io.kritor.AuthRsp
 import io.kritor.AuthenticationGrpc
 import io.kritor.AuthenticationGrpcKt
 import io.kritor.authReq
+import io.kritor.event.EventServiceGrpcKt
+import io.kritor.event.EventType
+import io.kritor.event.eventRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 
@@ -18,7 +21,7 @@ fun async(channel: Channel) {
         }
 
         override fun onNext(rsp: AuthRsp?) {
-
+            println(rsp)
         }
 
         override fun onError(e: Throwable?) {
@@ -39,7 +42,7 @@ suspend fun await(channel: Channel) {
             account = "1145141919810"
             ticket = "A123456"
         })
-        println(rsp.code)
+        println(rsp)
     }.onFailure {
         val status = Status.fromThrowable(it)
         println(status)
@@ -50,7 +53,7 @@ suspend fun await(channel: Channel) {
 
 suspend fun main() {
     val channel = ManagedChannelBuilder
-        .forAddress("localhost", 8080)
+        .forAddress("192.168.1.214", 5700)
         .usePlaintext()
         .enableRetry() // 允许尝试
         .executor(Dispatchers.IO.asExecutor()) // 使用协程的调度器
@@ -60,4 +63,10 @@ suspend fun main() {
     async(channel) // 异步grpc请求
 
     await(channel) // 同步grpc请求
+
+    EventServiceGrpcKt.EventServiceCoroutineStub(channel).registerActiveListener(eventRequest {
+        type = EventType.MESSAGE
+    }).collect {
+        println(it)
+    }
 }
