@@ -8,9 +8,6 @@ import io.kritor.AuthRsp
 import io.kritor.AuthenticationGrpc
 import io.kritor.AuthenticationGrpcKt
 import io.kritor.authReq
-import io.kritor.event.EventServiceGrpcKt
-import io.kritor.event.EventType
-import io.kritor.event.eventRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 
