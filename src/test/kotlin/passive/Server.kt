@@ -53,13 +53,13 @@ class PassiveKritorServer(
             }
         })
         .addService(object: EventServiceGrpcKt.EventServiceCoroutineImplBase() {
-            override suspend fun registerPassiveListener(requests: Flow<EventStructure>): EventRequest {
+            override suspend fun registerPassiveListener(requests: Flow<EventStructure>): RequestPushEvent {
                 requests.collect {
-                    if (it.type == EventType.MESSAGE) {
+                    if (it.type == EventType.EVENT_TYPE_MESSAGE) {
                         // 处理消息事件
                     }
                 }
-                return eventRequest {  }
+                return requestPushEvent {  }
             }
         })
         .build()!!

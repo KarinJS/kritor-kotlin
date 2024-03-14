@@ -16,8 +16,8 @@ val channel = ManagedChannelBuilder
     .executor(Dispatchers.IO.asExecutor()) // 使用协程的调度器
     .build()
 
-EventServiceGrpcKt.EventServiceCoroutineStub(channel).registerActiveListener(eventRequest { 
-    type = EventType.MESSAGE // 声明需要监听的是消息事件
+EventServiceGrpcKt.EventServiceCoroutineStub(channel).registerActiveListener(requestPushEvent { 
+    type = EventType.EVENT_TYPE_MESSAGE // 声明需要监听的是消息事件
 }).collect { 
 // 这里处理消息事件
 }

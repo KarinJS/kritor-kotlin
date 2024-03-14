@@ -10,7 +10,7 @@ import io.kritor.AuthenticationGrpcKt
 import io.kritor.authReq
 import io.kritor.event.EventServiceGrpcKt
 import io.kritor.event.EventType
-import io.kritor.event.eventRequest
+import io.kritor.event.requestPushEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 
@@ -64,8 +64,8 @@ suspend fun main() {
 
     await(channel) // 同步grpc请求
 
-    EventServiceGrpcKt.EventServiceCoroutineStub(channel).registerActiveListener(eventRequest {
-        type = EventType.MESSAGE
+    EventServiceGrpcKt.EventServiceCoroutineStub(channel).registerActiveListener(requestPushEvent {
+        type = EventType.EVENT_TYPE_MESSAGE
     }).collect {
         println(it)
     }
