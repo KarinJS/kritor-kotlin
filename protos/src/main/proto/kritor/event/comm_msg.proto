@@ -87,7 +87,6 @@ message Element {
     FileElement file = 24;
     MarkdownElement markdown = 25;
     ButtonElement button = 26;
-
     NodeElement node = 99;
   }
 }
