@@ -118,3 +118,23 @@ message GroupWholeBanNotice {
   uint64 operator = 3;
   bool is_whole_ban = 2;
 }
+
+message FriendFileComeNotice {
+  uint64 operator = 1;
+  string file_id = 2;
+  string file_sub_id = 3;
+  string file_name = 4;
+  uint64 file_size = 5;
+  uint32 expire_time = 6;
+}
+
+message GroupFileComeNotice {
+  uint64 group_id = 8;
+  uint64 operator = 1;
+  string file_id = 2;
+  string file_sub_id = 3;
+  string file_name = 4;
+  uint64 file_size = 5;
+  uint32 expire_time = 6;
+  int32 biz = 7;
+}

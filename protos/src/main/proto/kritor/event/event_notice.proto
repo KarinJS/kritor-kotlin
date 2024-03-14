@@ -11,7 +11,7 @@ import "kritor/event/comm_notice.proto";
 enum NoticeType {
   FRIEND_POKE = 0; // 好友头像戳一戳
   FRIEND_RECALL = 1; // 好友消息撤回
-
+  FRIEND_FILE_COME = 2; // 私聊文件上传
 
   GROUP_POKE = 12; // 群头像戳一戳
   GROUP_CARD_CHANGED = 13; // 群名片改变
@@ -23,7 +23,9 @@ enum NoticeType {
   GROUP_ADMIN_CHANGED = 19; // 群管理员变动
   GROUP_MEMBER_BANNED = 20; // 群成员被禁言
   GROUP_SIGN = 21; // 群签到
-  GROUP_WHOLE_BAN = 22;
+  GROUP_WHOLE_BAN = 22; // 群全员禁言
+
+  GROUP_FILE_COME = 23; // 群文件上传
 }
 
 message NoticeEvent {
@@ -31,15 +33,18 @@ message NoticeEvent {
   uint32 time  = 2;
   FriendPokeNotice friend_poke = 3;
   FriendRecallNotice friend_recall = 4;
-  GroupPokeNotice group_poke = 5;
+  FriendFileComeNotice friend_file_come = 5;
+
+  GroupPokeNotice group_poke = 11;
   //GroupCardChangedNotice group_card_changed = 6;
-  GroupUniqueTitleChangedNotice group_member_unique_title_changed = 7;
-  EssenceMessageNotice group_essence_changed = 8;
-  GroupRecallNotice group_recall = 9;
-  GroupMemberIncreasedNotice group_member_increase = 10;
-  GroupMemberDecreasedNotice group_member_decrease = 11;
-  GroupAdminChangedNotice group_admin_changed = 12;
-  GroupMemberBannedNotice group_member_banned = 13;
-  GroupSignNotice group_sign = 14;
-  GroupWholeBanNotice group_whole_ban = 15;
+  GroupUniqueTitleChangedNotice group_member_unique_title_changed = 12;
+  EssenceMessageNotice group_essence_changed = 13;
+  GroupRecallNotice group_recall = 14;
+  GroupMemberIncreasedNotice group_member_increase = 15;
+  GroupMemberDecreasedNotice group_member_decrease = 16;
+  GroupAdminChangedNotice group_admin_changed = 17;
+  GroupMemberBannedNotice group_member_banned = 18;
+  GroupSignNotice group_sign = 19;
+  GroupWholeBanNotice group_whole_ban = 20;
+  GroupFileComeNotice group_file_come = 21;
 }
