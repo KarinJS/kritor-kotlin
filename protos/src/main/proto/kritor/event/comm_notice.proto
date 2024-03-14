@@ -98,6 +98,11 @@ message GroupRecallNotice {
   uint64 group_id = 1;
   uint64 message_id = 2;
   string tip_text = 3;
+  uint64 operator_uin = 4;
+  string operator_uid = 5;
+  uint64 target_uin = 6;
+  string target_uid = 7;
+  uint64 message_seq = 8;
 }
 
 message GroupSignNotice {
@@ -110,5 +115,6 @@ message GroupSignNotice {
 
 message GroupWholeBanNotice {
   uint64 group_id = 1;
+  uint64 operator = 3;
   bool is_whole_ban = 2;
 }
