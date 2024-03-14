@@ -47,6 +47,7 @@ enum ElementType {
   LOCATION = 14;
   SHARE = 15;
   GIFT = 16;
+  MARKET_FACE = 17;
 
   NODE = 99;
 }
@@ -71,6 +72,8 @@ message Element {
     LocationElement location = 16;
     ShareElement share = 17;
     GiftElement gift = 18;
+    MarketFace market_face = 19;
+
     NodeElement node = 99;
   }
 }
@@ -185,6 +188,10 @@ message ShareElement {
 message GiftElement {
   uint64 qq = 1;
   uint32 id = 2;
+}
+
+message MarketFace {
+  string id = 1;
 }
 
 message NodeElement {
