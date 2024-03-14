@@ -52,6 +52,7 @@ enum ElementType {
   CONTACT = 19;
   JSON = 20;
   XML = 21;
+  FILE = 22;
 
   NODE = 99;
 }
@@ -81,6 +82,7 @@ message Element {
     ContactElement contact = 21;
     JsonElement json = 22;
     XmlElement xml = 23;
+    FileElement file = 24;
 
 
     NodeElement node = 99;
@@ -221,6 +223,16 @@ message JsonElement {
 
 message XmlElement {
   string xml = 1;
+}
+
+message FileElement {
+  string name = 1;
+  uint64 size = 2;
+  uint64 expire_time = 3;
+  string id = 4;
+  string url = 5;
+  int32 biz = 6;
+  string sub_id = 7;
 }
 
 message NodeElement {
