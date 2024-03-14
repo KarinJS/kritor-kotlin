@@ -14,8 +14,8 @@ message FriendApplyRequest {
 }
 
 enum GroupApplyType {
-  ADD = 0;
-  INVITE = 1;
+  GROUP_APPLY_ADD = 0;
+  GROUP_APPLY_INVITE = 1;
 }
 
 message GroupApplyRequest {
