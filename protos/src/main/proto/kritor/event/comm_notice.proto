@@ -74,8 +74,6 @@ message GroupMemberDecreasedNotice {
 
 message GroupAdminChangedNotice {
   uint64 group_id = 1;
-  string operator_uid = 2;
-  uint64 operator_uin = 3;
   string target_uid = 4;
   uint64 target_uin = 5;
   bool is_admin = 6;
@@ -108,4 +106,9 @@ message GroupSignNotice {
   string action = 6;
   string suffix = 7;
   string rank_image = 8;
+}
+
+message GroupWholeBanNotice {
+  uint64 group_id = 1;
+  bool is_whole_ban = 2;
 }

@@ -23,6 +23,7 @@ enum NoticeType {
   GROUP_ADMIN_CHANGED = 19; // 群管理员变动
   GROUP_MEMBER_BANNED = 20; // 群成员被禁言
   GROUP_SIGN = 21; // 群签到
+  GROUP_WHOLE_BAN = 22;
 }
 
 message NoticeEvent {
@@ -40,4 +41,5 @@ message NoticeEvent {
   GroupAdminChangedNotice group_admin_changed = 12;
   GroupMemberBannedNotice group_member_banned = 13;
   GroupSignNotice group_sign = 14;
+  GroupWholeBanNotice group_whole_ban = 15;
 }
