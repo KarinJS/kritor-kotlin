@@ -49,6 +49,9 @@ enum ElementType {
   GIFT = 16;
   MARKET_FACE = 17;
   FORWARD = 18;
+  CONTACT = 19;
+  JSON = 20;
+  XML = 21;
 
   NODE = 99;
 }
@@ -75,6 +78,10 @@ message Element {
     GiftElement gift = 18;
     MarketFaceElement market_face = 19;
     ForwardElement forward = 20;
+    ContactElement contact = 21;
+    JsonElement json = 22;
+    XmlElement xml = 23;
+
 
     NodeElement node = 99;
   }
@@ -201,6 +208,19 @@ message ForwardElement {
   string uniseq = 2;
   string summary = 3;
   string description = 4;
+}
+
+message ContactElement {
+  Scene scene = 1;
+  string peer = 2;
+}
+
+message JsonElement {
+  string json = 1;
+}
+
+message XmlElement {
+  string xml = 1;
 }
 
 message NodeElement {
