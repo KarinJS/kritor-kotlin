@@ -53,6 +53,8 @@ enum ElementType {
   JSON = 20;
   XML = 21;
   FILE = 22;
+  MARKDOWN = 23;
+  BUTTON = 24;
 
   NODE = 99;
 }
@@ -83,7 +85,8 @@ message Element {
     JsonElement json = 22;
     XmlElement xml = 23;
     FileElement file = 24;
-
+    MarkdownElement markdown = 25;
+    ButtonElement button = 26;
 
     NodeElement node = 99;
   }
@@ -233,6 +236,45 @@ message FileElement {
   string url = 5;
   int32 biz = 6;
   string sub_id = 7;
+}
+
+message MarkdownElement {
+  string markdown = 1;
+}
+
+message ButtonActionPermission {
+  int32 type = 1;
+  repeated string role_ids = 2;
+  repeated string user_ids = 3;
+}
+
+message ButtonAction {
+  int32 type = 1;
+  ButtonActionPermission permission = 2;
+  string unsupported_tips = 3;
+  string data = 4;
+  bool reply = 5;
+  bool enter = 6;
+}
+
+message ButtonRender {
+  string label = 1;
+  string visited_label = 2;
+  int32 style = 3;
+}
+
+message Button {
+  string id = 1;
+  ButtonRender render_data = 2;
+  ButtonAction action = 3;
+}
+
+message Row {
+  repeated Button buttons = 1;
+}
+
+message ButtonElement {
+  repeated Row rows = 1;
 }
 
 message NodeElement {
