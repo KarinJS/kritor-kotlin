@@ -126,6 +126,7 @@ message FriendFileComeNotice {
   string file_name = 4;
   uint64 file_size = 5;
   uint32 expire_time = 6;
+  string url = 7;
 }
 
 message GroupFileComeNotice {
@@ -137,4 +138,5 @@ message GroupFileComeNotice {
   uint64 file_size = 5;
   uint32 expire_time = 6;
   int32 biz = 7;
+  string url = 9;
 }
