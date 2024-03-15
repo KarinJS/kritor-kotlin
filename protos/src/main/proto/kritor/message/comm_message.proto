@@ -91,8 +91,8 @@ message TextElement {
 
 message AtElement {
   oneof account {
-    uint64 uin = 1; // qq号
-    string uid = 2; // uid二选一
+    uint64 uin = 1; // qq号，全体成员则uin为0
+    string uid = 2; // uid二选一，全体成员这里请写all
   }
 }
 
