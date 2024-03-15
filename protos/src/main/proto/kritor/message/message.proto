@@ -19,6 +19,7 @@ service MessageService {
   rpc GetForwardMessages(GetForwardMessagesRequest) returns (GetForwardMessagesResponse) {} // 获取转发消息
 
   rpc GetMessage(GetMessageRequest) returns (GetMessageResponse) {} // 获取消息
+  rpc GetMessageBySeq(GetMessageBySeqRequest) returns (GetMessageBySeqResponse) {} // 获取消息
   rpc GetHistoryMessage(GetHistoryMessageRequest) returns (GetHistoryMessageResponse) {} // 获取历史消息
 }
 
@@ -82,6 +83,15 @@ message GetMessageRequest {
 }
 
 message GetMessageResponse {
+  MessageBody message = 1; // 获取到的消息
+}
+
+message GetMessageBySeqRequest {
+  Contact contact = 1; // 要获取的目标
+  uint64 message_seq = 2; // 要获取的消息序号
+}
+
+message GetMessageBySeqResponse {
   MessageBody message = 1; // 获取到的消息
 }
 
