@@ -86,28 +86,28 @@ message Element {
 }
 
 message TextElement {
-  string text = 1;
+  string text = 1; // 文本
 }
 
 message AtElement {
   oneof account {
-    uint64 uin = 1;
-    string uid = 2;
+    uint64 uin = 1; // qq号
+    string uid = 2; // uid二选一
   }
 }
 
 message FaceElement {
-  uint32 id = 1;
-  optional bool is_big = 2;
+  uint32 id = 1; // 表情id
+  optional bool is_big = 2; // 是否大表情，默认不是
 }
 
 message BubbleFaceElement {
-  uint32 id = 1;
-  uint32 count = 2;
+  uint32 id = 1; // 表情id
+  uint32 count = 2; // 表情数量
 }
 
 message ReplyElement {
-  uint64 message_id = 1;
+  uint64 message_id = 1; // 回复的消息id
 }
 
 enum ImageType {
@@ -117,36 +117,44 @@ enum ImageType {
 }
 
 message ImageElement {
-  string file = 1;
-  optional string url = 2;
-  optional ImageType type = 3;
+  oneof data {
+    string file_name = 1; // 图片文件名
+    string file_path = 3;// 图片绝对路径
+    string file_base64 = 5;// 文件base64
+    string url = 2; // 文件下载地址
+  }
+  optional ImageType type = 10;
 }
 
 message VoiceElement {
-  optional string file = 1;
-  string url = 2;
-  optional bool magic = 3;
+  oneof data {
+    string file_name = 1; // 图片文件名
+    string file_path = 3;// 图片绝对路径
+    string file_base64 = 5;// 文件base64
+    string url = 2; // 文件下载地址
+  }
+  optional bool magic = 10; // 是否魔法语音
 }
 
 message VideoElement {
-  string file = 1;
-  optional string url = 2;
+  oneof data {
+    string file_name = 1; // 图片文件名
+    string file_path = 3;// 图片绝对路径
+    string file_base64 = 5;// 文件base64
+    string url = 2; // 文件下载地址
+  }
 }
 
-message BasketballElement {
+message BasketballElement {} // NT丐版，这类消息的值由服务器随机生成
 
-}
+message DiceElement {}
 
-message DiceElement {
-}
-
-message RpsElement {
-}
+message RpsElement {}
 
 message PokeElement {
-  uint32 id = 1;
-  uint32 type = 2;
-  uint32 strength = 3;
+  uint32 id = 1; // 戳一戳id
+  uint32 type = 2; // 戳一戳类型
+  uint32 strength = 3; // 戳一戳强度
 }
 
 enum MusicPlatform {
@@ -193,7 +201,7 @@ message ShareElement {
 message GiftElement {
   uint64 qq = 1;
   uint32 id = 2;
-}
+} // 不支持发送
 
 message MarketFaceElement {
   string id = 1;
@@ -219,9 +227,7 @@ message XmlElement {
   string xml = 1;
 }
 
-message FileElement {
-
-}
+message FileElement {} // 不支持通过这里发送
 
 message MarkdownElement {
   string markdown = 1;
@@ -265,4 +271,4 @@ message ButtonElement {
 message NodeElement {
   Contact scene = 1;
   uint64 message_id = 2;
-}
+} // 不支持发送
