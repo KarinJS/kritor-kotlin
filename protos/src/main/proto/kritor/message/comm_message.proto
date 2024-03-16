@@ -124,6 +124,8 @@ message ImageElement {
     string file_base64 = 5;// 文件base64，不需要base://开头
     string url = 2; // 文件下载地址
   }
+  optional uint32 sub_type = 6;
+  optional string file = 7;
   optional ImageType type = 10;
 }
 
@@ -134,6 +136,7 @@ message VoiceElement {
     string file_base64 = 5;// 文件base64
     string url = 2; // 文件下载地址
   }
+  optional string file = 7;
   optional bool magic = 10; // 是否魔法语音
 }
 
@@ -144,6 +147,7 @@ message VideoElement {
     string file_base64 = 5;// 文件base64
     string url = 2; // 文件下载地址
   }
+  optional string file = 7;
 }
 
 message BasketballElement {
