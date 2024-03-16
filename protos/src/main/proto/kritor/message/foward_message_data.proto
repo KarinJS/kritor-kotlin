@@ -7,6 +7,7 @@ option java_multiple_files = true;
 option java_package = "io.kritor.message";
 
 import "kritor/message/comm_message.proto";
+import "kritor/message/scene.proto";
 
 message ForwardSender {
   string uid = 1;
@@ -15,6 +16,7 @@ message ForwardSender {
 }
 
 message ForwardMessageBody {
+  Contact contact = 5;
   ForwardSender sender = 1;
   optional uint32 message_time = 2;
   optional uint32 message_seq = 3;
