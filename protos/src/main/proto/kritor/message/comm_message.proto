@@ -238,7 +238,15 @@ message XmlElement {
   string xml = 1;
 }
 
-message FileElement {} // 不支持通过这里发送
+message FileElement {
+  optional string name = 1;
+  optional uint64 size = 2;
+  optional uint64 expire_time = 3;
+  optional string id = 4;
+  optional string url = 5;
+  optional int32 biz = 6;
+  optional string sub_id = 7;
+} // 不支持通过这里发送
 
 message MarkdownElement {
   string markdown = 1;
