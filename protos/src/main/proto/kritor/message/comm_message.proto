@@ -120,7 +120,7 @@ message ImageElement {
   oneof data {
     string file_name = 1; // 图片文件名
     string file_path = 3;// 图片绝对路径
-    string file_base64 = 5;// 文件base64
+    string file_base64 = 5;// 文件base64，不需要base://开头
     string url = 2; // 文件下载地址
   }
   optional ImageType type = 10;
