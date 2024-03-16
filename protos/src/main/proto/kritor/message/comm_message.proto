@@ -99,6 +99,7 @@ message AtElement {
 message FaceElement {
   uint32 id = 1; // 表情id
   optional bool is_big = 2; // 是否大表情，默认不是
+  optional uint32 result = 3;
 }
 
 message BubbleFaceElement {
@@ -145,11 +146,17 @@ message VideoElement {
   }
 }
 
-message BasketballElement {} // NT丐版，这类消息的值由服务器随机生成
+message BasketballElement {
+  uint32 id = 1;
+} // NT改版，这类消息的值由服务器随机生成
 
-message DiceElement {}
+message DiceElement {
+  uint32 id = 1;
+}
 
-message RpsElement {}
+message RpsElement {
+  uint32 id = 1;
+}
 
 message PokeElement {
   uint32 id = 1; // 戳一戳id
