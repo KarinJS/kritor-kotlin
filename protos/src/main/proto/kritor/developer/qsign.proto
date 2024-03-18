@@ -8,6 +8,7 @@ option java_package = "io.kritor.qsign";
 
 service DeveloperService {
   rpc Sign(SignRequest) returns (SignResponse);
+  rpc Energy(EnergyRequest) returns (EnergyResponse);
 
   rpc SendPacket(SendPacketRequest) returns (SendPacketResponse);
 }
@@ -26,9 +27,19 @@ message SignResponse {
   bytes extra = 3;
 }
 
+message EnergyRequest {
+  string data = 2;
+  bytes salt = 3;
+}
+
+message EnergyResponse {
+
+}
+
 message SendPacketRequest {
   string command = 1;
   bytes request_buffer = 2;
+  bool is_protobuf = 3;
 }
 
 message SendPacketResponse {
