@@ -293,3 +293,80 @@ message GetHistoryMessageResponse {
 }
 ```
 
+## 删除群精华消息
+
+删除群精华消息。
+
+### 参数
+
+- **方法名**: `DeleteEssenceMsg`
+- **请求类型**: `DeleteEssenceMsgRequest`
+- **响应类型**: `DeleteEssenceMsgResponse`
+
+### 请求与响应
+
+```protobuf
+message DeleteEssenceMsgRequest {
+  uint64 group_id = 1;
+  uint64 message_id = 2; // 要删除的消息ID
+}
+
+message DeleteEssenceMsgResponse {
+}
+```
+
+## 获取群精华消息列表
+
+获取群精华消息列表。
+
+### 参数
+
+- **方法名**: `GetEssenceMessages`
+- **请求类型**: `GetEssenceMessagesRequest`
+- **响应类型**: `GetEssenceMessagesResponse`
+
+### 请求与响应
+
+```protobuf
+message EssenceMessage {
+  uint64 sender_uin = 1;
+  string sender_nick = 2;
+  uint32 msg_time = 3;
+  uint64 operator_uin = 4;
+  string operator_nick = 5;
+  uint32 operation_time = 6;
+  uint64 message_id = 7;
+  uint64 message_seq = 8;
+  repeated Element elements = 9;
+}
+
+message GetEssenceMessagesRequest {
+  uint64 group_id = 1;
+}
+
+message GetEssenceMessagesResponse {
+  repeated EssenceMessage essence_message = 1;
+}
+```
+
+## 设置群精华消息
+
+设置群精华消息。
+
+### 参数
+
+- **方法名**: `SetEssenceMessage`
+- **请求类型**: `SetEssenceMessageRequest`
+- **响应类型**: `SetEssenceMessageResponse`
+
+### 请求与响应
+
+```protobuf
+message SetEssenceMessageRequest {
+  uint64 group_id = 1;
+  uint64 message_id = 2; // 要设置为精华消息的消息ID
+}
+
+message SetEssenceMessageResponse {
+}
+```

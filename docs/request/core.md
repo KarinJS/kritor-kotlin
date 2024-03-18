@@ -132,3 +132,25 @@ message SwitchAccountRequest {
 
 message SwitchAccountResponse {}
 ```
+
+## 获取设备电池状态
+
+获取设备电池状态。
+
+### 参数
+
+- **方法名**: `GetDeviceBattery`
+- **请求类型**: `GetDeviceBatteryRequest`
+- **响应类型**: `GetDeviceBatteryResponse`
+
+### 请求与响应
+
+```protobuf
+message GetDeviceBatteryRequest {}
+
+message GetDeviceBatteryResponse {
+  uint32 battery = 1; // 设备电量
+  uint32 scale = 2;
+  uint32 status = 3;
+}
+```

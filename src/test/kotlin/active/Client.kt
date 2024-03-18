@@ -1,5 +1,8 @@
 package active
 
+import active.test.messageTest
+import active.test.testContact
+import active.test.testCore
 import io.grpc.Channel
 import io.grpc.ManagedChannelBuilder
 import io.grpc.Status
@@ -63,6 +66,10 @@ suspend fun main() {
     async(channel) // 异步grpc请求
 
     await(channel) // 同步grpc请求
+
+    testCore(channel)
+    testContact(channel)
+    //messageTest(channel)
 
     EventServiceGrpcKt.EventServiceCoroutineStub(channel).registerActiveListener(requestPushEvent {
         type = EventType.EVENT_TYPE_MESSAGE

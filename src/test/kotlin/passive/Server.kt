@@ -25,6 +25,7 @@ class PassiveKritorServer(
             override fun reverseStream(requests: Flow<Response>): Flow<Request> {
                 // 这里Kritor端建立了一个连接, 并且给予了一个Flow
                 // 这个flow用于接收来自Kritor端的返回包
+                println("链接建立")
                 requestList.add(request {
                     cmd = "Authentication.Auth"
                     buf = authReq {
@@ -45,6 +46,7 @@ class PassiveKritorServer(
 
                     while (true) {
                         if (requestList.isNotEmpty()) {
+                            println("发送请求包")
                             send(requestList.removeFirst()) // 发送请求包
                         } // 如果有请求包，就发送
                         delay(10) // 没有就等待
@@ -57,6 +59,7 @@ class PassiveKritorServer(
                 requests.collect {
                     if (it.type == EventType.EVENT_TYPE_MESSAGE) {
                         // 处理消息事件
+                        println(it)
                     }
                 }
                 return requestPushEvent {  }
@@ -73,6 +76,6 @@ class PassiveKritorServer(
 }
 
 fun main() {
-    PassiveKritorServer(8080)
+    PassiveKritorServer(8081)
         .start(true)
 }

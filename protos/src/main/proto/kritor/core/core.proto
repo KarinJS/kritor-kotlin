@@ -14,6 +14,8 @@ service KritorService {
   rpc GetCurrentAccount(GetCurrentAccountRequest) returns (GetCurrentAccountResponse) {} // 获取当前账户信息
 
   rpc SwitchAccount(SwitchAccountRequest) returns (SwitchAccountResponse) {} // 切换账户
+
+  rpc GetDeviceBattery(GetDeviceBatteryRequest) returns (GetDeviceBatteryResponse) {} // 获取设备电量
 }
 
 message GetVersionRequest {}
@@ -58,3 +60,11 @@ message SwitchAccountRequest {
 }
 
 message SwitchAccountResponse {}
+
+message GetDeviceBatteryRequest {}
+
+message GetDeviceBatteryResponse {
+  uint32 battery = 1; // 设备电量
+  uint32 scale = 2;
+  uint32 status = 3;
+}

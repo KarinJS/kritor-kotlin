@@ -8,6 +8,7 @@ option java_package = "io.kritor.message";
 
 import "kritor/message/scene.proto";
 import "kritor/message/comm_message.proto";
+import "kritor/message/message_data.proto";
 
 service MessageService {
   rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {} // 发送消息
@@ -21,6 +22,10 @@ service MessageService {
   rpc GetMessage(GetMessageRequest) returns (GetMessageResponse) {} // 获取消息
   rpc GetMessageBySeq(GetMessageBySeqRequest) returns (GetMessageBySeqResponse) {} // 获取消息
   rpc GetHistoryMessage(GetHistoryMessageRequest) returns (GetHistoryMessageResponse) {} // 获取历史消息
+
+  rpc DeleteEssenceMsg(DeleteEssenceMsgRequest) returns (DeleteEssenceMsgResponse) {} // 删除精华消息
+  rpc GetEssenceMessages(GetEssenceMessagesRequest) returns (GetEssenceMessagesResponse) {} // 获取精华消息
+  rpc SetEssenceMessage(SetEssenceMessageRequest) returns (SetEssenceMessageResponse) {} // 设置精华消息
 }
 
 message SendMessageRequest {
@@ -103,4 +108,28 @@ message GetHistoryMessageRequest {
 
 message GetHistoryMessageResponse {
   repeated MessageBody messages = 1; // 获取到的消息
+}
+
+message DeleteEssenceMsgRequest {
+  uint64 group_id = 1;
+  uint64 message_id = 2; // 要删除的消息ID
+}
+
+message DeleteEssenceMsgResponse {
+}
+
+message GetEssenceMessagesRequest {
+  uint64 group_id = 1;
+}
+
+message GetEssenceMessagesResponse {
+  repeated EssenceMessage essence_message = 1;
+}
+
+message SetEssenceMessageRequest {
+  uint64 group_id = 1;
+  uint64 message_id = 2; // 要设置为精华消息的消息ID
+}
+
+message SetEssenceMessageResponse {
 }
