@@ -18,5 +18,5 @@ message EssenceMessage {
   uint32 operation_time = 6;
   uint64 message_id = 7;
   uint64 message_seq = 8;
-  repeated Element elements = 9;
+  string json_elements = 9;
 }

@@ -120,6 +120,8 @@ message DeleteEssenceMsgResponse {
 
 message GetEssenceMessagesRequest {
   uint64 group_id = 1;
+  uint32 page = 2;
+  uint32 page_size = 3;
 }
 
 message GetEssenceMessagesResponse {
