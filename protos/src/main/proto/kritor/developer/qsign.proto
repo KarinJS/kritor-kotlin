@@ -39,6 +39,7 @@ message SendPacketRequest {
   string command = 1;
   bytes request_buffer = 2;
   bool is_protobuf = 3;
+  map<string, string> attrs = 4;
 }
 
 message SendPacketResponse {
