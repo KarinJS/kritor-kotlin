@@ -1,6 +1,5 @@
 package active
 
-import active.test.messageTest
 import active.test.testContact
 import active.test.testCore
 import io.grpc.Channel

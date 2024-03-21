@@ -1,19 +1,18 @@
 package passive
 
 import io.grpc.ManagedChannelBuilder
-import io.grpc.Status
-import io.grpc.stub.StreamObserver
-import io.kritor.*
+import io.kritor.AuthCode
+import io.kritor.AuthReq
+import io.kritor.ReverseServiceGrpcKt
+import io.kritor.authRsp
 import io.kritor.reverse.ReqCode
 import io.kritor.reverse.Response
 import io.kritor.reverse.response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
-import kotlinx.coroutines.channels.ProducerScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.flow
-import java.util.Collections
+import java.util.*
 
 suspend fun main() {
     val channel = ManagedChannelBuilder

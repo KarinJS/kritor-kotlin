@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    protobuf(project(":protos"))
+    protobuf(files("kritor/protos"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
     implementation("io.grpc:grpc-stub:1.62.2")
